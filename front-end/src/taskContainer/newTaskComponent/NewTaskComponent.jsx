@@ -9,7 +9,8 @@ const NewTaskComponent = (props) => {
     const[newTask, setNewTask] = useState({
         taskName:"",
         description: "",
-        category: 0
+        category: "",
+        complete: false
     })
     //setting an object in state, this state keeps track of
     //what the user has put in the form
@@ -70,7 +71,8 @@ const NewTaskComponent = (props) => {
                 //resetting state of form
                 taskName:"",
                 description: "",
-                category: 0
+                category: "",
+                complete: false
             })
             setIsValidState({
                 valid: true,

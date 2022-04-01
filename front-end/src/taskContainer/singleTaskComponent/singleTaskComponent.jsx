@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 //boilerplate
 
 const SingleTaskComponent = (props) => {
@@ -17,7 +17,8 @@ const SingleTaskComponent = (props) => {
         taskName: props.task.taskName,
         description: props.task.description,
         _id: props.task._id,
-        category: props.task.category
+        category: props.task.category,
+        complete: props.task.complete
     })
     //setting an object in state, this state keeps track of
     //what the user has put in the form
@@ -52,22 +53,36 @@ const SingleTaskComponent = (props) => {
     const tID = props.task._id
     const tCategory = props.task.category
     const tDelete = props.deleteTask
+    let tComplete = props.task.complete
 
+    // const [color, setColor] = useState("cont")
     
+    // const changeColor = () => {
+    //     console.log(color)
+    //     setColor("cont"+tCategory)
+    // }
+    // onClick={(e) => {setColor(e.target.value); changeColor()}}
+    // className={color}
+    
+    // useEffect( () => {
+    //     // setUpdateTask()
+    //     console.log(isComplete + " first isComplete");
+    // }, [isComplete + "2nd isComplete"]);
+    //     console.log(isComplete + " first isComplete");
+    // }, [isComplete + "2nd isComplete"]);
     return (
         <div className="index-single-task">
-            
+            <div id="fieldsetbox">
             <fieldset>
                 <legend>{tName}</legend>
                 {tDescription.length > 0 
             ?   <div className="index-single-task-details">
-                    <p>{tDescription}</p>
-                    <p>{tCategory}</p>
+                    {tDescription}
+                    <p >{tCategory}</p>
                 </div>
             :   <p>task has no description</p>
                 }
                 <button onClick={()=>{tDelete(tID)}}>Delete</button>
-                
                 {
             showing 
             ?
@@ -75,10 +90,11 @@ const SingleTaskComponent = (props) => {
                 <button onClick={toggleShowing}>X</button>
                 <form onSubmit={submitUpdateTask}>
                     { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
+                    
                     <label htmlFor="taskName">Task Name:</label>
                     <input onChange={handleInputChange} type="text" name="taskName" id="taskName" value={updateTask.taskName}/><br></br>
-                    <label htmlFor="description">Description:</label>
-                    <input onChange={handleInputChange} type="text" name="description" id="description" value={updateTask.description}/><br></br>
+                    {/* <label htmlFor="description">Description:</label> */}
+                    {/* <input onChange={handleInputChange} type="text" name="description" id="description" value={updateTask.description}/><br></br> */}
                     <label htmlFor="category">Category:</label>
                     {/* <input onChange={handleInputChange} type="number" name="category" id="category" value= {updateTask.category}/> */}
                     
@@ -87,8 +103,25 @@ const SingleTaskComponent = (props) => {
                         <option className="cont2" value="2">2</option>
                         <option className="cont3" value="3">3</option>
                     </select>
+                    <textarea onChange={handleInputChange} maxlength="204" type="text" name="description" id="description" value={updateTask.description} rows="4" cols="50"></textarea>
                     
                     
+                    {/* <input 
+                    onClick={handleInputChange}
+                    // onClick={toggleComplete}
+                    type="radio" 
+                    name="complete" 
+                    id="complete" 
+                    value="true"
+                    /> */}
+                    {/* <input onChange={handleInputChange} type="text" name="complete" id="complete" value={updateTask.complete}/><br></br> */}
+
+                    <select onClick={handleInputChange} name="complete" id="complete">
+                        {/* <option value={updateTask.complete}></option> */}
+                        <option value={null}>Completion Status</option>
+                        <option name="complete" value={true}>Complete</option>
+                        <option name="complete" value={false}>Incomplete</option>
+                    </select>
                     <br></br>
                     <button type="submit">Submit</button>   
                 </form>
@@ -96,6 +129,7 @@ const SingleTaskComponent = (props) => {
             :   <button onClick={toggleShowing}>Edit This Task</button>
             }
             </fieldset>
+            </div>
         </div>
     )
 }

@@ -35,14 +35,15 @@ legend{
   text-align: right;
   align-content: right;
   margin: 1rem;
-  z-index: 5;
+  /* z-index: 5; */
   transform: translate(3rem, -6rem);
   width: fit-content;
   
 }
-/* .index-single-task{
-  z-index: 0;
-} */
+.index-single-task{
+  max-width: 10rem;
+  
+}
 /* .test{
   grid-column-start: 2;
   grid-row-start: 1;
@@ -73,4 +74,15 @@ legend{
 }
 .cont3{
   color:blue
+}
+#fieldsetbox{
+  background-color: aquamarine;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+}
+.index-single-task-details{
+  word-wrap: break-word;
+  width: 10rem;
+  height: stretch;
 }

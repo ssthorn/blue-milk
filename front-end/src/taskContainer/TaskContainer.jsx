@@ -124,8 +124,11 @@ const TaskContainer = () => {
         setRequestError(parsedResponse.data)
     }
 }  
-    useEffect(getTasks, [])
+useEffect(()=>{
+    getTasks()
+}, [])
     //this is so the it happens when the page loads
+    
     
     return (
         <div className='task-container'>
