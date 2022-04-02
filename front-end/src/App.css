@@ -125,3 +125,35 @@ button {
   color: white;
 
 }
+.index-single-user, .new-user-form, #edit-user-form{
+  width: 7rem;
+}
+.user-container{
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  justify-content: center;
+  /* gap: 1rem; */
+  flex-direction: row-reverse;
+  /* background-color: antiquewhite; */
+}
+
+.users-button{
+  text-decoration: none;
+  position: fixed;
+  left: 1rem;
+  top: 5rem;
+}
+
+.new-user-button{
+  width: 4rem;
+  background-color: rgb(19, 115, 180);
+  
+}
+.new-user-form{
+  /* transform: translate(-10rem,0rem); */
+  
+}
+.new-user-field{
+  background-color: gray;
+}

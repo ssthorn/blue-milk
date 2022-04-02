@@ -1,5 +1,6 @@
 import './App.css';
 import TaskContainer from './taskContainer/TaskContainer';
+import UserContainer from './userContainer/UserContainer';
 
 //brings in the stateful component
 
@@ -14,7 +15,7 @@ function App() {
       
 
       </section>
-      
+      <UserContainer></UserContainer>
       <TaskContainer></TaskContainer>
       
       
