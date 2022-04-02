@@ -13,14 +13,14 @@ body{
 }
 .task-container{
   display: grid;
-  grid-template-columns:3 1fr 1fr 1fr;
+  grid-template-rows:1fr;
   gap: 1rem;
-  place-items: center;
+  /* place-items: center; */
 }
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   .task-container{
     display: grid;
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 .single-task{
@@ -50,8 +50,13 @@ legend{
   
 }
 .index-single-task{
-  /* width: 80vw; */
-  width: 30vw;
+  width: 80vw;
+}
+@media screen and (min-width: 600px){
+  .index-single-task{
+    width: 30vw;
+  }
+  
 }
 
 #fieldsetbox{
@@ -88,14 +93,17 @@ button {
 }
 .top-bar{
   display: flex;
+  position: fixed;
   color: red;
   background-color: beige;
 }
 .new-task-button{
-  background-color: red;
-  color: beige;
+  /* background-image: url("/public/16057.png"); */
+  /* background-color: red; */
+  /* color: red; */
+  /* color: beige; */
   position: fixed;
-  top: .7rem;
-  right: 3rem;
-  width: 7rem;
+  top: .3rem;
+  right: .3rem;
+  /* width: 7rem; */
 }
