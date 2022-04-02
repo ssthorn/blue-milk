@@ -37,7 +37,8 @@ legend{
   background-color: white;
 }
 .new-task-form {
-  background-color: white;
+  background-color: transparent;
+  text-align: right;
 }
 #edit-task-form{
   background-color: white;
@@ -65,12 +66,20 @@ legend{
   width: 15rem; */
 }
 fieldset{
-  border: 3px
+  border: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
 }
 .index-single-task-details{
   word-wrap: break-word;
   /* width: 10rem; */
   height: stretch;
+}
+input{
+  border: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1;
 }
 button {
   background-color: rgba(230, 225, 225, 0.5);
@@ -96,6 +105,8 @@ button {
   position: fixed;
   color: red;
   background-color: beige;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
 }
 .new-task-button{
   /* background-image: url("/public/16057.png"); */
@@ -106,4 +117,11 @@ button {
   top: .3rem;
   right: .3rem;
   /* width: 7rem; */
+}
+.color-button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 4rem;
+  color: white;
+
 }

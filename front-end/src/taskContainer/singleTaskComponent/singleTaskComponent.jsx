@@ -112,32 +112,30 @@ const SingleTaskComponent = (props) => {
                 </div>
             :   <p>task has no description</p>
                 }
-                <button  style={{color: tColor}} onClick={()=>{tDelete(tID)}}>Delete</button>
+                
                 {
             showing 
             ?
             <div id="edit-task-form">
-                <button onClick={toggleShowing}>Close</button>
+                <button className="close-button" onClick={toggleShowing}>Close</button>
                 <form onSubmit={submitUpdateTask}>
                     { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
                     
                     <label htmlFor="taskName">Task Name:</label>
                     <input onChange={handleInputChange} type="text" name="taskName" id="taskName" value={updateTask.taskName}/><br></br>
-                    {/* <label htmlFor="description">Description:</label> */}
-                    {/* <input onChange={handleInputChange} type="text" name="description" id="description" value={updateTask.description}/><br></br> */}
-                    <label htmlFor="category">Category:</label>
-                    {/* <input onChange={handleInputChange} type="number" name="category" id="category" value= {updateTask.category}/> */}
                     
+                    {/* <label htmlFor="category">Category:</label>
                     <select onChange={handleInputChange} type="number" name="category" id="category" value={updateTask.category}>
                         <option className="cont1" value="1">1</option>
                         <option className="cont2" value="2">2</option>
                         <option className="cont3" value="3">3</option>
-                    </select>
+                    </select> */}
+                    <label htmlFor="description">Description:</label>
                     <input onChange={handleInputChange} maxLength="100" type="text" name="description" id="description" value={updateTask.description}></input>
-                    <input onChange={handleInputChange} type="text" name="taskColor" id="taskColor" value={tColor}/><br></br>
+                    
                     
                     <label htmlFor="taskColor">Preview:</label>
-                <button  
+                <button  className="color-button"
                 type="button" 
                 name="taskColor"
                 id="taskColor"
@@ -163,6 +161,7 @@ const SingleTaskComponent = (props) => {
 
                 <button type="submit">Submit</button>   
                 </form>
+                <button  style={{color: tColor}} onClick={()=>{tDelete(tID)}}>Delete</button>
             </div>
             :   <button onClick={toggleShowing}>Edit This Task</button>
             }
