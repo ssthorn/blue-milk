@@ -110,7 +110,7 @@ const NewTaskComponent = (props) => {
                         </fieldset>
                     </form>
                 </div>
-            :   <button onClick={toggleShowing}>Create New Task</button>
+            :   <button className="new-task-button" onClick={toggleShowing}>Create New Task</button>
             
         }  
         </>

@@ -104,21 +104,20 @@ const SingleTaskComponent = (props) => {
         <div className="index-single-task">
             
 
-            <fieldset style={{background: color}}>
-                <legend>{tName}</legend>
+            <fieldset style={{background: tColor}}>
+                <legend style={{color: tColor}}>{tName}</legend>
                 {tDescription.length > 0 
             ?   <div className="index-single-task-details">
-                    {tDescription}
-                    <p >{tCategory}</p>
+                    <h2>{tDescription}</h2>
                 </div>
             :   <p>task has no description</p>
                 }
-                <button onClick={()=>{tDelete(tID)}}>Delete</button>
+                <button  style={{color: tColor}} onClick={()=>{tDelete(tID)}}>Delete</button>
                 {
             showing 
             ?
             <div id="edit-task-form">
-                <button onClick={toggleShowing}>X</button>
+                <button onClick={toggleShowing}>Close</button>
                 <form onSubmit={submitUpdateTask}>
                     { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
                     
@@ -134,24 +133,24 @@ const SingleTaskComponent = (props) => {
                         <option className="cont2" value="2">2</option>
                         <option className="cont3" value="3">3</option>
                     </select>
-                    <textarea onChange={handleInputChange} maxLength="100" type="text" name="description" id="description" value={updateTask.description} rows="4" cols="50"></textarea>
+                    <input onChange={handleInputChange} maxLength="100" type="text" name="description" id="description" value={updateTask.description}></input>
                     <input onChange={handleInputChange} type="text" name="taskColor" id="taskColor" value={tColor}/><br></br>
                     
-                    <label htmlFor="taskColor">next color:</label>
+                    <label htmlFor="taskColor">Preview:</label>
                 <button  
                 type="button" 
                 name="taskColor"
                 id="taskColor"
-                onChange={handleInputChange} 
+                onClick={handleInputChange} 
                 onClick={changeColor}
                 style={{background: color}} 
-                value={color}>
+                value={updateTask.taskColor}>
                     {color}
                 </button>
-                <select onChange={handleInputChange} onClick={changeColor} name="taskColor" id="taskColor">
+                <select onChange={handleInputChange} name="taskColor" id="taskColor">
                     {/* <option value={updateTask.complete}></option> */}   
-                    <option value={null}>Color</option>
-                    <option name="taskColor" value={color} style={{background: color}}></option>
+                    <option value={null}>Apply Color</option>
+                    <option name="taskColor" value={color} style={{background: color}}>Apply</option>
                 </select>
 
                 <select onClick={handleInputChange} name="complete" id="complete">

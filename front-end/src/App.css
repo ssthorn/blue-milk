@@ -1,15 +1,21 @@
+
+*{
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 2px;
+  padding: 3px;
+  margin: 3px;
+}
 body{
   background-color: gray;
 }
 .App {
   text-align: center;
-  
 }
 .task-container{
   display: grid;
   grid-template-columns:3 1fr 1fr 1fr;
   gap: 1rem;
-  /* place-items: center; */
+  place-items: center;
 }
 @media screen and (max-width: 600px) {
   .task-container{
@@ -18,61 +24,78 @@ body{
   }
 }
 .single-task{
-  background-color: rgb(80, 80, 197);
+  
   text-align: left;
   border: none;
-  height:15rem;
-  max-width: 15rem;
+  /* height:15rem;
+  max-width: 15rem; */
+}
+h2{
+  color: white;
 }
 legend{
-  background-color: orange;
+  background-color: white;
 }
 .new-task-form {
-  background-color: rgba(175, 223, 235, .5);
+  background-color: white;
 }
 #edit-task-form{
-  background-color: rgba(175, 223, 235);
+  background-color: white;
   text-align: right;
   align-content: right;
   margin: 1rem;
   /* z-index: 5; */
-  transform: translate(-15rem, -10rem);
+  /* transform: translate(, -1rem); */
   width: fit-content;
   
 }
 .index-single-task{
-  max-width: 10rem;
-  
-}
-/* .test{
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-} */
-/* input{
-  background-color: transparent;
-  border: none;
-} */
-.category-tag{
-  color: greenyellow;
-}
-
-.button {
-  border-radius: 8px;
-  font-size: 20px;
-  background-color: red;
-  color: white;
-  margin-left: 70px;
-  margin-top: 100px;
+  /* width: 80vw; */
+  width: 30vw;
 }
 
 #fieldsetbox{
   display: flex;
-  height: 15rem;
-  width: 15rem;
+  /* height: 15rem;
+  width: 15rem; */
+}
+fieldset{
+  border: 3px
 }
 .index-single-task-details{
   word-wrap: break-word;
-  width: 10rem;
+  /* width: 10rem; */
   height: stretch;
+}
+button {
+  background-color: rgba(230, 225, 225, 0.5);
+  border: 0;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 1.5rem;
+  width: 100%; /* Large, mobile-friendly touch target */
+
+  /* Media Queries */
+  @media (min-width: 37.5em) {
+    width: auto; /* Smaller buttons on larger screens */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+.top-bar{
+  display: flex;
+  color: red;
+  background-color: beige;
+}
+.new-task-button{
+  background-color: red;
+  color: beige;
+  position: fixed;
+  top: .7rem;
+  right: 3rem;
+  width: 7rem;
 }
