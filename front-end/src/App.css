@@ -7,9 +7,9 @@ body{
 }
 .task-container{
   display: grid;
-  grid-template-columns:1fr;
+  grid-template-columns:3 1fr 1fr 1fr;
   gap: 1rem;
-  place-items: center;
+  /* place-items: center; */
 }
 @media screen and (max-width: 600px) {
   .task-container{
@@ -17,15 +17,15 @@ body{
     grid-template-columns:1fr;
   }
 }
-fieldset{
-  background-color: rgba(222, 184, 135, .3);
+.single-task{
+  background-color: rgb(80, 80, 197);
   text-align: left;
   border: none;
-  height:10rem;
-  max-width: 30rem;
+  height:15rem;
+  max-width: 15rem;
 }
 legend{
-  background-color: yellow;
+  background-color: orange;
 }
 .new-task-form {
   background-color: rgba(175, 223, 235, .5);
@@ -36,7 +36,7 @@ legend{
   align-content: right;
   margin: 1rem;
   /* z-index: 5; */
-  transform: translate(3rem, -6rem);
+  transform: translate(-15rem, -10rem);
   width: fit-content;
   
 }
@@ -56,10 +56,7 @@ legend{
 .category-tag{
   color: greenyellow;
 }
-.cont1 {
-  
-  color: red;
-}
+
 .button {
   border-radius: 8px;
   font-size: 20px;
@@ -68,18 +65,11 @@ legend{
   margin-left: 70px;
   margin-top: 100px;
 }
-.cont2 {
-  
-  color: green;
-}
-.cont3{
-  color:blue
-}
+
 #fieldsetbox{
-  background-color: aquamarine;
   display: flex;
-  height: fit-content;
-  width: fit-content;
+  height: 15rem;
+  width: 15rem;
 }
 .index-single-task-details{
   word-wrap: break-word;

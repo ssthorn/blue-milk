@@ -10,7 +10,8 @@ const NewTaskComponent = (props) => {
         taskName:"",
         description: "",
         category: "",
-        complete: false
+        complete: false,
+         
     })
     //setting an object in state, this state keeps track of
     //what the user has put in the form

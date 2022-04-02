@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 //boilerplate
 
 const SingleTaskComponent = (props) => {
@@ -18,7 +18,8 @@ const SingleTaskComponent = (props) => {
         description: props.task.description,
         _id: props.task._id,
         category: props.task.category,
-        complete: props.task.complete
+        complete: props.task.complete,
+        taskColor: props.task.taskColor
     })
     //setting an object in state, this state keeps track of
     //what the user has put in the form
@@ -54,26 +55,56 @@ const SingleTaskComponent = (props) => {
     const tCategory = props.task.category
     const tDelete = props.deleteTask
     let tComplete = props.task.complete
+    let tColor = props.task.taskColor
 
-    // const [color, setColor] = useState("cont")
+    //random color function
+    const letters = '0123456789ABCDEF';
+    let hash = '#';
+    const [color, setColor] = useState("color")
+    const changeColor = () => {
+        
+        for (let i = 0; i < 6; i++) {
+            hash += letters[Math.floor(Math.random() * 16)];
+        }
+        setColor(hash)
+        if(tColor !== color){
+            console.log("not the same")
+        }else{
+            console.log("looks good")
+
+        }
+    }
     
-    // const changeColor = () => {
-    //     console.log(color)
-    //     setColor("cont"+tCategory)
-    // }
-    // onClick={(e) => {setColor(e.target.value); changeColor()}}
-    // className={color}
-    
+    useEffect( () => {
+        // changeColor()
+        // setColor(tColor)
+        console.log(color + " color");
+        console.log(tColor +" tColor")
+        return () => {
+            // console.log("return from color")
+        }
+    }, [color]);
+
+    // const [resourceType, setResourceType] = useState("")
+    // const [items, setItems] = useState([])
     // useEffect( () => {
-    //     // setUpdateTask()
-    //     console.log(isComplete + " first isComplete");
-    // }, [isComplete + "2nd isComplete"]);
-    //     console.log(isComplete + " first isComplete");
-    // }, [isComplete + "2nd isComplete"]);
+    //     fetch(`http://localhost:3001/tasks`)
+    //     .then(response => response.json())
+    //     // .then(json => console.log(json))
+    //     .then(json => setItems(json))
+        
+
+    //     return () => {
+    //         console.log("return from other thing")
+    //     }
+    // }, [color]);
+    // let stringy = JSON.stringify(items)
     return (
+        <>
         <div className="index-single-task">
-            <div id="fieldsetbox">
-            <fieldset>
+            
+
+            <fieldset style={{background: color}}>
                 <legend>{tName}</legend>
                 {tDescription.length > 0 
             ?   <div className="index-single-task-details">
@@ -103,35 +134,63 @@ const SingleTaskComponent = (props) => {
                         <option className="cont2" value="2">2</option>
                         <option className="cont3" value="3">3</option>
                     </select>
-                    <textarea onChange={handleInputChange} maxlength="204" type="text" name="description" id="description" value={updateTask.description} rows="4" cols="50"></textarea>
+                    <textarea onChange={handleInputChange} maxLength="100" type="text" name="description" id="description" value={updateTask.description} rows="4" cols="50"></textarea>
+                    <input onChange={handleInputChange} type="text" name="taskColor" id="taskColor" value={tColor}/><br></br>
                     
-                    
-                    {/* <input 
-                    onClick={handleInputChange}
-                    // onClick={toggleComplete}
-                    type="radio" 
-                    name="complete" 
-                    id="complete" 
-                    value="true"
-                    /> */}
-                    {/* <input onChange={handleInputChange} type="text" name="complete" id="complete" value={updateTask.complete}/><br></br> */}
+                    <label htmlFor="taskColor">next color:</label>
+                <button  
+                type="button" 
+                name="taskColor"
+                id="taskColor"
+                onChange={handleInputChange} 
+                onClick={changeColor}
+                style={{background: color}} 
+                value={color}>
+                    {color}
+                </button>
+                <select onChange={handleInputChange} onClick={changeColor} name="taskColor" id="taskColor">
+                    {/* <option value={updateTask.complete}></option> */}   
+                    <option value={null}>Color</option>
+                    <option name="taskColor" value={color} style={{background: color}}></option>
+                </select>
 
-                    <select onClick={handleInputChange} name="complete" id="complete">
-                        {/* <option value={updateTask.complete}></option> */}
-                        <option value={null}>Completion Status</option>
-                        <option name="complete" value={true}>Complete</option>
-                        <option name="complete" value={false}>Incomplete</option>
-                    </select>
-                    <br></br>
-                    <button type="submit">Submit</button>   
+                <select onClick={handleInputChange} name="complete" id="complete">
+                    {/* <option value={updateTask.complete}></option> */}
+                    <option value={null}>Completion Status</option>
+                    <option name="complete" value={true}>Complete</option>
+                    <option name="complete" value={false}>Incomplete</option>
+                </select>
+                <br></br>
+
+                <button type="submit">Submit</button>   
                 </form>
             </div>
             :   <button onClick={toggleShowing}>Edit This Task</button>
             }
             </fieldset>
-            </div>
+            <form onSubmit={submitUpdateTask}>
+
+                {/* <button  
+                    type="submit" 
+                    name="taskColor"
+                    id="taskColor"
+                    onChange={handleInputChange} 
+                    onClick={(e) => {setColor(e.target.value); changeColor()}}
+                    style={{background: color}} 
+                    value={color}>
+                        {color}
+                </button>
+
+                <select onClick={handleInputChange} onChange={changeColor} name="taskColor" id="taskColor">
+                    <option value={null}>Color</option>
+                    <option name="taskColor" value={color} style={{background: color}}></option>
+                </select> */}
+
+            </form>
         </div>
+    </>  
     )
+    
 }
 
 export default SingleTaskComponent

@@ -132,6 +132,9 @@ useEffect(()=>{
     
     return (
         <div className='task-container'>
+            {/* {tasks.map(task => {
+                    return <h1 key={task._id}>{JSON.stringify(task.taskColor)}</h1>
+                })} */}
             
             <div className='test'>
                 <NewTaskComponent
@@ -157,6 +160,9 @@ useEffect(()=>{
                 //once SingleTaskComponent is build, we can return it. 1:12:57                                  
 
             })}
+            
+            
+            
         </div>
         
     )
