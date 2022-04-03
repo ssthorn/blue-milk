@@ -132,41 +132,19 @@ useEffect(()=>{
     
     return (
         <div className='task-container'>
-            {/* {tasks.map(task => {
-                    return <h1 key={task._id}>{JSON.stringify(task.taskColor)}</h1>
-                })} */}
-            
-            <div className='test'>
                 <NewTaskComponent
                 newTaskServerError={newTaskServerError}
                 CreateNewTask={CreateNewTask}
-                
                 ></NewTaskComponent>
-            </div>
             {tasks.reverse().map((task) => {
-            //function that maps over an array
                 return <SingleTaskComponent 
                 key={task._id} 
                 task={task} 
                 deleteTask={deleteTask} 
                 updateTask={updateTask}
-                
                 ></SingleTaskComponent>
-                        
-                // <p key={task._id}> {task.taskName}: {task.description}</p>
-                //boilerplate to test with 'dummy data' first with {JSON.stringify(task)}
-                //then specific keys accessed with a "key=" called
-                // return is expected from .map
-                //once SingleTaskComponent is build, we can return it. 1:12:57                                  
-
             })}
-            
-            
-            
-        </div>
-        
+        </div>   
     )
 }
-
-
 export default TaskContainer

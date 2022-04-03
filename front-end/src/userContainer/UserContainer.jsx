@@ -70,15 +70,12 @@ useEffect(()=>{
 }, [])
     return (
         <div className='user-container'>
-            <a className="users-button" href="#"><h2>Users</h2></a>
-           
-            <div className='test'>
-                <NewUserComponent
-                newUserServerError={newUserServerError}
-                CreateNewUser={CreateNewUser}
-                ></NewUserComponent>
-            </div>
-            {users.reverse().map((user) => {
+            <NewUserComponent
+            newUserServerError={newUserServerError}
+            CreateNewUser={CreateNewUser}
+            ></NewUserComponent>
+        
+            {users.map((user) => {
                 return <SingleUserComponent 
                 key={user._id} 
                 user={user} 

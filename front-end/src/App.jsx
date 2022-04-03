@@ -12,8 +12,6 @@ function App() {
       <section className="top-bar">
       <h1>Task App</h1>
       
-      
-
       </section>
       <UserContainer></UserContainer>
       <TaskContainer></TaskContainer>

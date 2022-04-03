@@ -30,42 +30,58 @@ const SingleUserComponent = (props) => {
     const uDelete = props.deleteUser
     
     let uColor = props.user.userColor
-
+//random color function
+const letters = '0123456789ABCDEF';
+let hash = '#';
+const [color, setColor] = useState("color")
+const changeColor = () => {
+    
+    for (let i = 0; i < 6; i++) {
+        hash += letters[Math.floor(Math.random() * 16)];
+    }
+    setColor(hash)
+    
+}
     return (
         <>
             <div className="index-single-user">
-
-            <h2 className="users-button" >Users</h2>
-                
-                    <section>
-                        <fieldset style={{background: uColor}}>
-                        <legend style={{color: uColor}}>{uName}</legend>
-                        {uTaken.length > 0 
-                    ?   <div className="index-single-user-details">
-                            <span>O</span>
-                        </div>
-                    :   <p>user has no tasks</p>
-                        }
+                    <section className="user-tray">
                         
-                        {
+                       {
                     showing 
                     ?
                     <div id="edit-user-form">
-                        <button className="close-button" onClick={toggleShowing}>Close</button>
+                        
+                        <svg className="close-button" onClick={toggleShowing} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+
                         <form onSubmit={submitUpdateUser}>
                             { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
-                            
-                            <label htmlFor="userName">User Name:</label>
-                            <input onChange={handleInputChange} type="text" name="userName" id="userName" value={updateUser.userName}/><br></br>
-                            
-                        <button type="submit">Submit</button>   
+                            <ul>
+                                <li>{uTaken}</li>
+                            </ul>
+                            <label htmlFor="userColor">Preview:</label>
+                <button  className="color-button"
+                type="button" 
+                name="userColor"
+                id="userColor"
+                onClick={handleInputChange} 
+                onClick={changeColor}
+                style={{background: color}} 
+                value={updateUser.userColor}>
+                    {color}
+                </button>
+                <select onChange={handleInputChange} name="userColor" id="userColor">
+                    <option name="userColor" value={color} style={{background: uColor}}>Apply Color</option>
+                    <option name="userColor" value={color} style={{background: color}}>Apply</option>
+                </select>
+                <button className= "submit-button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
+
                         </form>
                         <button  style={{color: uColor}} onClick={()=>{uDelete(uID)}}>Delete</button>
                     </div>
-                    :   <div onClick={toggleShowing}></div>
+                    : <h4 className="userDisplayName" onClick={toggleShowing} style={{background: uColor}}>{uName}</h4>
                     }
-                    </fieldset>
-
+                    
                 </section>
                 
                

@@ -2,16 +2,12 @@ import React, {useState, useEffect} from "react";
 //boilerplate
 
 const SingleTaskComponent = (props) => {
-    //presentational component that takes care of props
     const [isvalidState, setIsValidState] = useState({valid: true, message:""})
 
     const[showing, setShowing] = useState(false)
-    //setting state for showing
     const toggleShowing = () => {
-        // function to toggle state of showing in a button
         
         setShowing(!showing)
-        //sets variable equal to its opposite
     }
     const[updateTask, setUpdateTask] = useState({
         taskName: props.task.taskName,
@@ -21,31 +17,16 @@ const SingleTaskComponent = (props) => {
         complete: props.task.complete,
         taskColor: props.task.taskColor
     })
-    //setting an object in state, this state keeps track of
-    //what the user has put in the form
-    //and build this object as the user updates the form
-    //the state updates as the user changes it...
     const handleInputChange = (e) => {
-        //this gets put in to input of task form
-        //handling things in-state is the 'react-y' pattern.
-        //that way you can perfrom validations on the front-end
-        //before submit is clicked
-        //e or event is a listener
-        
         setUpdateTask({
             ...updateTask,
-            //keep all the old values, and update only the key with the 
-            //same name as the input..done with the spread operator.
             [e.target.name]: e.target.value
-            //hack-y way of making it accept dots in key names
-            //now we are keeping track in state of the form
         })
         
     }
     const submitUpdateTask = (e) => {
         e.preventDefault();
         props.updateTask(props.task._id, updateTask)
-        //call function from parent
         setShowing(false)
         
     }
@@ -76,34 +57,18 @@ const SingleTaskComponent = (props) => {
     }
     
     useEffect( () => {
-        // changeColor()
-        // setColor(tColor)
+        changeColor()
         console.log(color + " color");
         console.log(tColor +" tColor")
         return () => {
-            // console.log("return from color")
+            
         }
-    }, [color]);
+    }, []);
 
-    // const [resourceType, setResourceType] = useState("")
-    // const [items, setItems] = useState([])
-    // useEffect( () => {
-    //     fetch(`http://localhost:3001/tasks`)
-    //     .then(response => response.json())
-    //     // .then(json => console.log(json))
-    //     .then(json => setItems(json))
-        
-
-    //     return () => {
-    //         console.log("return from other thing")
-    //     }
-    // }, [color]);
-    // let stringy = JSON.stringify(items)
+    
     return (
         <>
         <div className="index-single-task">
-            
-
             <fieldset style={{background: tColor}}>
                 <legend style={{color: tColor}}>{tName}</legend>
                 {tDescription.length > 0 
@@ -117,19 +82,15 @@ const SingleTaskComponent = (props) => {
             showing 
             ?
             <div id="edit-task-form">
-                <button className="close-button" onClick={toggleShowing}>Close</button>
+                <svg className="close-button" onClick={toggleShowing} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg>
+                
                 <form onSubmit={submitUpdateTask}>
                     { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
                     
                     <label htmlFor="taskName">Task Name:</label>
                     <input onChange={handleInputChange} type="text" name="taskName" id="taskName" value={updateTask.taskName}/><br></br>
                     
-                    {/* <label htmlFor="category">Category:</label>
-                    <select onChange={handleInputChange} type="number" name="category" id="category" value={updateTask.category}>
-                        <option className="cont1" value="1">1</option>
-                        <option className="cont2" value="2">2</option>
-                        <option className="cont3" value="3">3</option>
-                    </select> */}
+                
                     <label htmlFor="description">Description:</label>
                     <input onChange={handleInputChange} maxLength="100" type="text" name="description" id="description" value={updateTask.description}></input>
                     
@@ -146,13 +107,12 @@ const SingleTaskComponent = (props) => {
                     {color}
                 </button>
                 <select onChange={handleInputChange} name="taskColor" id="taskColor">
-                    {/* <option value={updateTask.complete}></option> */}   
-                    <option value={null}>Apply Color</option>
+                    <option name="taskColor" value={color} style={{background: tColor}}>Apply Color</option>
                     <option name="taskColor" value={color} style={{background: color}}>Apply</option>
                 </select>
 
                 <select onClick={handleInputChange} name="complete" id="complete">
-                    {/* <option value={updateTask.complete}></option> */}
+                    
                     <option value={null}>Completion Status</option>
                     <option name="complete" value={true}>Complete</option>
                     <option name="complete" value={false}>Incomplete</option>
@@ -163,26 +123,11 @@ const SingleTaskComponent = (props) => {
                 </form>
                 <button  style={{color: tColor}} onClick={()=>{tDelete(tID)}}>Delete</button>
             </div>
-            :   <button onClick={toggleShowing}>Edit This Task</button>
+            
+            :<svg onClick={toggleShowing} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
             }
             </fieldset>
             <form onSubmit={submitUpdateTask}>
-
-                {/* <button  
-                    type="submit" 
-                    name="taskColor"
-                    id="taskColor"
-                    onChange={handleInputChange} 
-                    onClick={(e) => {setColor(e.target.value); changeColor()}}
-                    style={{background: color}} 
-                    value={color}>
-                        {color}
-                </button>
-
-                <select onClick={handleInputChange} onChange={changeColor} name="taskColor" id="taskColor">
-                    <option value={null}>Color</option>
-                    <option name="taskColor" value={color} style={{background: color}}></option>
-                </select> */}
 
             </form>
         </div>
