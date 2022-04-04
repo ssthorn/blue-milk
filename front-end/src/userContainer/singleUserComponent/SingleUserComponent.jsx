@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 const SingleUserComponent = (props) => {
     const [isvalidState, setIsValidState] = useState({valid: true, message:""})
@@ -60,25 +60,25 @@ const changeColor = () => {
                                 <li>{uTaken}</li>
                             </ul>
                             <label htmlFor="userColor">Preview:</label>
-                <button  className="color-button"
-                type="button" 
-                name="userColor"
-                id="userColor"
-                onClick={handleInputChange} 
-                onClick={changeColor}
-                style={{background: color}} 
-                value={updateUser.userColor}>
-                    {color}
-                </button>
-                <select onChange={handleInputChange} name="userColor" id="userColor">
-                    <option name="userColor" value={color} style={{background: uColor}}>Apply Color</option>
-                    <option name="userColor" value={color} style={{background: color}}>Apply</option>
-                </select>
-                <button className= "submit-button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
+                            <button  className="color-button"
+                                type="button" 
+                                name="userColor"
+                                id="userColor"
+                                onClick={handleInputChange} 
+                                onClick={changeColor}
+                                style={{background: color}} 
+                                value={updateUser.userColor}>
+                                    {color}
+                            </button>
+                            <select onChange={handleInputChange} name="userColor" id="userColor">
+                                <option name="userColor" value={color} style={{background: uColor}}>Apply Color</option>
+                                <option name="userColor" value={color} style={{background: color}}>Apply</option>
+                            </select>
+                            <button className= "submit-button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
 
                         </form>
-                        <button  style={{color: uColor}} onClick={()=>{uDelete(uID)}}>Delete</button>
-                    </div>
+                            <button  style={{color: uColor}} onClick={()=>{uDelete(uID)}}>Delete</button>
+                        </div>
                     : <h4 className="userDisplayName" onClick={toggleShowing} style={{background: uColor}}>{uName}</h4>
                     }
                     

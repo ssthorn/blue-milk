@@ -1,13 +1,10 @@
 import {useState, useEffect} from 'react'
 import SingleUserComponent from './singleUserComponent/SingleUserComponent'
-//this component will be holding users in state
 import NewUserComponent from './newUserComponent/NewUserComponent.jsx'
-import CategoryComponent from '../categoryComponent/CategoryComponent'
 
 const UserContainer = () => {
     const [requestError, setRequestError] =useState("")
     const [users, setUsers] = useState([])
-    //setting up state, initially with 'dummy data'
     const [newUserServerError, setNewUserServerError] = useState("")
     const CreateNewUser = async (newUser) => {
         const apiResponse = await fetch("http://localhost:3001/users",{
