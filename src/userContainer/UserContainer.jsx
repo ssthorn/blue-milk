@@ -7,7 +7,7 @@ const UserContainer = () => {
     const [users, setUsers] = useState([])
     const [newUserServerError, setNewUserServerError] = useState("")
     const CreateNewUser = async (newUser) => {
-        const apiResponse = await fetch("http://localhost:3001/users",{
+        const apiResponse = await fetch("https://serene-bayou-27727.herokuapp.com/users",{
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
@@ -24,7 +24,7 @@ const UserContainer = () => {
     }
     const deleteUser = async (idToDelete) => {
         try{
-            const apiResponse = await fetch(`http://localhost:3001/users/${idToDelete}`,{
+            const apiResponse = await fetch(`https://serene-bayou-27727.herokuapp.com/users/${idToDelete}`,{
                 method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -39,7 +39,7 @@ const UserContainer = () => {
     }
     const getUsers = async () => {
         try{
-            const users = await fetch("http://localhost:3001/users")
+            const users = await fetch("https://serene-bayou-27727.herokuapp.com/users")
             const parsedUsers = await users.json();
             setUsers(parsedUsers.data)
         }catch(err){
@@ -47,7 +47,7 @@ const UserContainer = () => {
         }
     }
     const updateUser = async (idToUpdate, userToUpdate) => {
-        const apiResponse = await fetch(`http://localhost:3001/users/${idToUpdate}`,{
+        const apiResponse = await fetch(`https://serene-bayou-27727.herokuapp.com/users/${idToUpdate}`,{
             method:"PUT",
             body: JSON.stringify(userToUpdate),
             headers: {

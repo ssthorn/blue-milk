@@ -7,7 +7,7 @@ const TaskContainer = () => {
     const [tasks, setTasks] = useState([])
     const [newTaskServerError, setNewTaskServerError] = useState("")
     const CreateNewTask = async (newTask) => {
-        const apiResponse = await fetch("http://localhost:3001/tasks",{
+        const apiResponse = await fetch("https://serene-bayou-27727.herokuapp.com/tasks",{
             method: "POST",
             body: JSON.stringify(newTask),
             headers: {
@@ -25,7 +25,7 @@ const TaskContainer = () => {
     }
     const deleteTask = async (idToDelete) => {
         try{
-            const apiResponse = await fetch(`http://localhost:3001/tasks/${idToDelete}`,{
+            const apiResponse = await fetch(`https://serene-bayou-27727.herokuapp.com/tasks/${idToDelete}`,{
                 method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -42,7 +42,7 @@ const TaskContainer = () => {
     }
     const getTasks = async () => {
         try{
-            const tasks = await fetch("http://localhost:3001/tasks")
+            const tasks = await fetch("https://serene-bayou-27727.herokuapp.com/tasks")
             const parsedTasks = await tasks.json();
             setTasks(parsedTasks.data)
         }catch(err){
@@ -50,7 +50,7 @@ const TaskContainer = () => {
         }
     }
     const updateTask = async (idToUpdate, taskToUpdate) => {
-        const apiResponse = await fetch(`http://localhost:3001/tasks/${idToUpdate}`,{
+        const apiResponse = await fetch(`https://serene-bayou-27727.herokuapp.com/tasks/${idToUpdate}`,{
             method:"PUT",
             body: JSON.stringify(taskToUpdate),
             headers: {
