@@ -79,6 +79,8 @@ input{
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   line-height: 1;
+  padding: 0;
+  align-items: center;
   width: 100%;
 }
 textarea{
@@ -123,8 +125,11 @@ button {
   color: white;
 
 }
-.index-single-user, .new-user-form, #edit-user-form{
+.index-single-user, #edit-user-form{
   width: 7rem;
+}
+.new-user-form{
+  width: 10rem;
 }
 
 #edit-user-form{
@@ -152,6 +157,9 @@ button {
 
 .new-user-button{
   width: 2rem;
+  position: fixed;
+  right: 5rem;
+  top: 2rem;
   
 }
 .userDisplayName{
