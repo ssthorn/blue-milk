@@ -57,6 +57,7 @@ legend{
 @media screen and (min-width: 600px){
   .index-single-task{
     width: 30vw;
+    height: 30vh;
   }
   
 }
