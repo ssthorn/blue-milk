@@ -11,7 +11,6 @@ const NewTaskComponent = (props) => {
         description: "",
         category: "",
         complete: false,
-         
     })
     //setting an object in state, this state keeps track of
     //what the user has put in the form
@@ -92,20 +91,33 @@ const NewTaskComponent = (props) => {
             ?   <div className="new-task-form">
                     <form onSubmit={submitNewTask}>
                         <fieldset>
-                            <button className="close-button" onClick={toggleShowing}>Close</button><br></br>
+                            <h1>New Task:</h1>
+                            <button className="close-button" onClick={toggleShowing}>Close</button>
+
+                            <br></br>
+
                             { isvalidState.valid ? null :<p className="form-error">{isvalidState.message}</p>}
                             { props.newTaskServerError ? <p className="form-error">{props.newTaskServerError}</p> : null}
+                            
                             <label htmlFor="taskName">Task:</label>
-                            <input onChange={handleInputChange} type="text" name="taskName" id="taskName" value={newTask.taskName}/><br></br>
+                            <input onChange={handleInputChange} type="text" name="taskName" id="taskName" value={newTask.taskName}/>
+                            
+                            <br></br>
+
                             <label htmlFor="description">Description:</label>
-                            <input onChange={handleInputChange} type="text" name="description" id="taskName" value={newTask.description}/><br></br>
+                            <input onChange={handleInputChange} type="text" name="description" id="taskName" value={newTask.description}/>
+                            
+                            <br></br>
+                            
                             <label htmlFor="category">Category</label>
                             <select onChange={handleInputChange} type="number" name="category" id="category" value= {newTask.category}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                             </select>
+
                             <br></br>
+
                             <button type="submit">Submit</button>
                         </fieldset>
                     </form>

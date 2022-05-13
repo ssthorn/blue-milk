@@ -65,7 +65,7 @@ const changeColor = () => {
                                 name="userColor"
                                 id="userColor"
                                 onClick={handleInputChange} 
-                                onClick={changeColor}
+                                onMouseDown={changeColor}
                                 style={{background: color}} 
                                 value={updateUser.userColor}>
                                     {color}
