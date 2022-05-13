@@ -103,7 +103,7 @@ const SingleTaskComponent = (props) => {
                 name="taskColor"
                 id="taskColor"
                 onClick={handleInputChange} 
-                onClick={changeColor}
+                onMouseDown={changeColor}
                 style={{background: color}} 
                 value={updateTask.taskColor}>
                     {color}
